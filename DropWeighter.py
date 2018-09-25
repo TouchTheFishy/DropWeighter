@@ -13,8 +13,8 @@ try:
     print('Listening...')
     while True:
         data = ser.read()
-        if data.length > 0:
-            print(data)
+
+        print(data)
 
 
 
