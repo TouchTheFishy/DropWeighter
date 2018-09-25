@@ -14,10 +14,11 @@ try:
     print('Data Echo Mode Enabled')
     i=0;
     while True:
-        print("reading",i)
+        print "reading ",i
         if ser.inWaiting() > 0:
             data = ser.read()
             print "Data: ",data
+            print "Data Length: ", data.length
             i+=1
             time.sleep(1)
 
