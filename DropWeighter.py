@@ -8,6 +8,7 @@ ser = serial.Serial('/dev/ttyAMA0', baudrate=9600,
                     stopbits=serial.STOPBITS_ONE,
                     bytesize=serial.EIGHTBITS
                     )
+print ("started")
 time.sleep(1)
 try:
     ser.write('Hello World\r\n')
