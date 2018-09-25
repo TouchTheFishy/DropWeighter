@@ -18,7 +18,7 @@ try:
         if ser.inWaiting() > 0:
             data = ser.read()
             print "Data: ",data
-            print "Data Length: ", data.length
+            print "Data Length: ", len(data)
             i+=1
             time.sleep(1)
 
