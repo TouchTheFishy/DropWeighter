@@ -13,9 +13,11 @@ time.sleep(1)
 try:
     print('Data Echo Mode Enabled')
     while True:
+        print("reading")
         if ser.inWaiting() > 0:
             data = ser.read()
-            print(data)
+            print("Data: ",data)
+            time.sleep(1)
 
 except KeyboardInterrupt:
     print("Exiting Program")
