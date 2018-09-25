@@ -16,7 +16,7 @@ try:
         print("reading")
         if ser.inWaiting() > 0:
             data = ser.read()
-            print("Data: ",data)
+            print "Data: ",data
             time.sleep(1)
 
 except KeyboardInterrupt:
