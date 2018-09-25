@@ -14,7 +14,8 @@ try:
     while True:
         if ser.inWaiting() > 0:
             data = ser.read()
-            print (data)
+            if data.length > 0:
+                print(data)
 
 except KeyboardInterrupt:
     print ("Exiting Program")
