@@ -48,8 +48,6 @@ while True:
     except KeyboardInterrupt:
         print("Exiting Program")
 
-    except:
-        print("Error Occurs, Exiting Program")
 
     finally:
         ser.close()
