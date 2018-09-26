@@ -7,7 +7,7 @@ print ("Starting program")
 
 ArduinoPin = 40
 
-now=time.strftime("%H%M_%d%b",time.localtime())
+now=time.strftime("%H%M%S_%d%b",time.localtime())
 fileName=now+".xls"
 book=xw.Workbook()
 sheet=book.add_sheet(str(now))
@@ -26,11 +26,11 @@ i=1
 while True:
     print "Dropping"
     lastDrop=int(round(time.time()*1000))
-    GPIO.output(ArduinoPin,1)
+    GPIO.output(ArduinoPin,0)
     while True:
         now = int(round(time.time() * 1000))
         if (now-lastDrop)>=50:
-            GPIO.output(ArduinoPin,0)
+            GPIO.output(ArduinoPin,1)
             break
 
     print "Waiting for stabilization"
