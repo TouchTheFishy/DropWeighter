@@ -21,6 +21,7 @@ ser = serial.Serial('/dev/ttyS0', baudrate=9600,
                     )
 print ("started")
 lastDrop=0
+lastweight=0
 i=1
 while True:
     print "Dropping"
@@ -28,7 +29,7 @@ while True:
     GPIO.output(22,1)
     while True:
         now = int(round(time.time() * 1000))
-        if (now-lastDrop)>=1000:
+        if (now-lastDrop)>=50:
             GPIO.output(22,0)
             break
 
@@ -49,7 +50,8 @@ while True:
                 data = ser.readline(16)
             parsed=data.split(" ")
             sheet.write(i, 0, i)
-            sheet.write(i, 1, data)
+            dropWeight=int(parsed[5])-lastweight
+            sheet.write(i, 1, dropWeight)
             book.save(fileName)
             i += 1
 
