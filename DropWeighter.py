@@ -23,7 +23,7 @@ while True:
             GPIO.output(22,0)
             break
     print "Waiting for stabilization"
-        #time.sleep(5)
+    time.sleep(0.5)
 
     # try:
     #     print('Data Echo Mode Enabled')
