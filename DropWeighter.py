@@ -33,6 +33,7 @@ while True:
 
     print "Waiting for stabilization"
     time.sleep(10)
+    ser.reset_input_buffer()
 
     try:
         print('Data Echo Mode Enabled')
