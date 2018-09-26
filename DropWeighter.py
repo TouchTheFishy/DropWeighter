@@ -13,7 +13,7 @@ ArduinoPin = 40
 now=time.strftime("%H%M%S_%d%b",time.localtime())
 fileName=now+".xls"
 
-#création du tableur de log
+#creation du tableur de log
 book=xw.Workbook()
 sheet=book.add_sheet(str(now))
 #insertion des entêtes
@@ -35,12 +35,12 @@ lastWeight=0
 i=1
 while True:
     print "Dropping"
-    #prise de l'heure à laquelle on a laché une goutte
+    #prise de l'heure a laquelle on a lache une goutte
     lastDrop=int(round(time.time()*1000))
     #activation du relais
     GPIO.output(ArduinoPin,0)
     while True:
-        #on soustrait l'heure de "lâchage" à l'heure actuelle et on regarde si 50ms sont passées
+        #on soustrait l'heure de "lachage" à l'heure actuelle et on regarde si 50ms sont passees
         now = int(round(time.time() * 1000))
         if (now-lastDrop)>=50:
             #si oui, on coupe le relais
@@ -49,8 +49,8 @@ while True:
     #on attend 3 secondes histoire que la balance se stabilise
     print "Waiting for stabilization"
     time.sleep(3)
-    #vu que la balance envoie en continu, il faut vider le port avant de mesurer afin d'etre sur qu'on à la mesure
-    #la plus récente
+    #vu que la balance envoie en continu, il faut vider le port avant de mesurer afin d'etre sur qu'on a la mesure
+    #la plus recente
     ser.reset_input_buffer()
     time.sleep(0.5)
 
@@ -62,12 +62,12 @@ while True:
             #on lit les données du port
             data = ser.readline(16)
             while len(data)!=16:
-                #on vérifie que le message est bien complet (16 bytes)
+                #on verifie que le message est bien complet (16 bytes)
                 ser.reset_input_buffer()
                 time.sleep(0.5)
                 data = ser.readline(16)
 
-            #on traduit les données recues en un truc lisible et on prend la valeur du
+            #on traduit les donnees recues en un truc lisible et on prend la valeur du
             parsed=data.split(" ")
             sheet.write(i, 0, i)
             dropWeight=float(parsed[5])-lastWeight
