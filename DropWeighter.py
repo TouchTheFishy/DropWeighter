@@ -16,7 +16,7 @@ fileName=now+".xls"
 #creation du tableur de log
 book=xw.Workbook()
 sheet=book.add_sheet(str(now))
-#insertion des entêtes
+#insertion des entetes
 sheet.write(0,0,'Drop')
 sheet.write(0,1,'Weight (g)')
 
