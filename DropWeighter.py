@@ -13,11 +13,7 @@ f=open(fileName,'w')
 f.write('Drop   Weight'+"\n")
 f.close()
 GPIO.setup(ArduinoPin,GPIO.OUT)
-ser = serial.Serial('/dev/ttyS0', baudrate=9600,
-                    parity=serial.PARITY_NONE,
-                    stopbits=serial.STOPBITS_ONE,
-                    bytesize=serial.EIGHTBITS
-                    )
+
 print ("started")
 lastDrop=0
 i=0
@@ -32,16 +28,21 @@ while True:
             break
 
     print "Waiting for stabilization"
-    time.sleep(5)
+    time.sleep(10)
+    ser = serial.Serial('/dev/ttyS0', baudrate=9600,
+                        parity=serial.PARITY_NONE,
+                        stopbits=serial.STOPBITS_ONE,
+                        bytesize=serial.EIGHTBITS
+                        )
 
     try:
         print('Data Echo Mode Enabled')
 
         print "Weighting... "
-
-        data = ser.read(16)
-        print "Data: ",data
-        print "Data Length: ", len(data)
+        if ser.inWaiting() > 0:
+            data = ser.read(16)
+            print "Data: ",data
+            print "Data Length: ", len(data)
 
 
 
