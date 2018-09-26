@@ -38,7 +38,7 @@ while True:
         print('Data Echo Mode Enabled')
 
         print "Weighting... "
-        if ser.inWaiting() > 0:
+        if ser.in_waiting() > 0:
             data = ser.read(16)
             print "Data: ",data
             print "Data Length: ", len(data)
