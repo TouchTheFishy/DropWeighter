@@ -77,7 +77,9 @@ while True:
             book.save(fileName)
             i += 1
 
-            print("Weight "+str(dropWeight)+"/n/n")
+            print("Drop Weight"+str(dropWeight))
+            print("")
+            print("")
 
 
 
