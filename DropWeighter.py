@@ -40,7 +40,7 @@ while True:
     #activation du relais
     GPIO.output(ArduinoPin,0)
     while True:
-        #on soustrait l'heure de "lachage" à l'heure actuelle et on regarde si 50ms sont passees
+        #on soustrait l'heure de "lachage" a l'heure actuelle et on regarde si 50ms sont passees
         now = int(round(time.time() * 1000))
         if (now-lastDrop)>=50:
             #si oui, on coupe le relais
@@ -59,7 +59,7 @@ while True:
 
         print "Weighting... "
         if ser.inWaiting() > 0:
-            #on lit les données du port
+            #on lit les donnees du port
             data = ser.readline(16)
             while len(data)!=16:
                 #on verifie que le message est bien complet (16 bytes)
