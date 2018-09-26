@@ -13,16 +13,16 @@ GPIO.setup(22,GPIO.OUT)
 print ("started")
 lastDrop=0
 while True:
-    try:
-        now=int(round(time.time()*1000))
-        print "Dropping"
-        GPIO.output(22,1)
-        while True:
-            if (now-lastDrop)>=50:
-                lastDrop=int(round(time.time()*1000))
-                GPIO.output(22,0)
-                break
-        print "Waiting for stabilization"
+    #try:
+    now=int(round(time.time()*1000))
+    print "Dropping"
+    GPIO.output(22,1)
+    while True:
+        if (now-lastDrop)>=50:
+            lastDrop=int(round(time.time()*1000))
+            GPIO.output(22,0)
+            break
+    print "Waiting for stabilization"
         #time.sleep(5)
 
     # try:
@@ -36,13 +36,13 @@ while True:
     #
 
 
-    except KeyboardInterrupt:
-        print("Exiting Program")
+    #except KeyboardInterrupt:
+        #print("Exiting Program")
 
-    except:
-        print("Error Occurs, Exiting Program")
+    #except:
+        #print("Error Occurs, Exiting Program")
 
-    finally:
+    #finally:
         #ser.close()
-        pass
+        #pass
 
