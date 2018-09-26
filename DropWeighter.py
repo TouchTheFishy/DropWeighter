@@ -1,17 +1,18 @@
 import time
 import serial
 import RPi.GPIO as GPIO
-
+import xlwt as xw
 GPIO.setmode(GPIO.BOARD)
 print ("Starting program")
 
 ArduinoPin = 22
 
 now=time.strftime("%d%b_%H%M",time.localtime())
-fileName="Test_"+now+".txt"
-f=open(fileName,'w')
-f.write('Drop   Weight'+"\n")
-f.close()
+fileName=now+".xls"
+book=xw.Workbook()
+sheet=book.add_sheet(str(now))
+sheet.write(0,0,'Iteration')
+sheet.write(0,1,'Weight')
 GPIO.setup(ArduinoPin,GPIO.OUT)
 ser = serial.Serial('/dev/ttyS0', baudrate=9600,
                     parity=serial.PARITY_NONE,
@@ -20,7 +21,7 @@ ser = serial.Serial('/dev/ttyS0', baudrate=9600,
                     )
 print ("started")
 lastDrop=0
-i=0
+i=1
 while True:
     print "Dropping"
     lastDrop=int(round(time.time()*1000))
@@ -47,9 +48,13 @@ while True:
                 time.sleep(0.5)
                 data = ser.readline(16)
             parsed=data.split(" ")
+            sheet.write(i, 0, i)
+            sheet.write(i, 1, data)
+            book.save(fileName)
+            i += 1
 
-            print "Data: ",parsed[5]
-            print "Data Length: ", len(data)
+            #print "Data: ",parsed[5]
+            #print "Data Length: ", len(data)
 
 
 

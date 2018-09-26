@@ -1,17 +1,18 @@
 import time
-import xlwt
+import xlwt as xw
 
 now=time.strftime("%d%b_%H%M",time.localtime())
-fileName="Test_"+now+".xls"
-f=open(fileName,'w')
-f.write('Drop   Weight'+"\n")
-f.close()
-i=0
+fileName=now+".xls"
+book=xw.Workbook()
+sheet=book.add_sheet(str(now))
+sheet.write(0,0,'Iteration')
+sheet.write(0,1,'Weight')
+
+i=1
 while True:
     data="lol"
-    f = open(fileName, 'a')
-    string=str(i) + "    " + str(data) + "\n"
-    f.write(string)
-    f.close()
+    sheet.write(i,0,i)
+    sheet.write(i,1,data)
+    book.save(fileName)
     i+=1
-    time.sleep(5)
+    time.sleep(1)
