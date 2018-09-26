@@ -6,7 +6,7 @@ import xlwt as xw
 GPIO.setmode(GPIO.BOARD)
 print ("Starting program")
 
-#Pin sur laquelle est branché le relais
+#Pin sur laquelle est branche le relais
 ArduinoPin = 40
 
 #sauvegarde de l'heure pour le nom du fichier log
@@ -67,7 +67,7 @@ while True:
                 time.sleep(0.5)
                 data = ser.readline(16)
 
-            #on traduit les données recues en un truc lisible et on prend la valeur du 
+            #on traduit les données recues en un truc lisible et on prend la valeur du
             parsed=data.split(" ")
             sheet.write(i, 0, i)
             dropWeight=float(parsed[5])-lastWeight
