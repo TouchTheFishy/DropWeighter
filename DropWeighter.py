@@ -77,7 +77,7 @@ while True:
             book.save(fileName)
             i += 1
 
-            print "Weight ",dropWeight,"/n/n"
+            print("Weight "+dropWeight+"/n/n")
 
 
 
