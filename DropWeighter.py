@@ -40,8 +40,9 @@ while True:
     #activation du relais
     GPIO.output(ArduinoPin,0)
     while True:
-        #on soustrait l'heure de "lachage" a l'heure actuelle et on regarde si 50ms sont passees
+        #on soustrait l'heure de "lachage" a l'heure actuelle
         now = int(round(time.time() * 1000))
+        #on regarde si 50ms sont passees
         if (now-lastDrop)>=50:
             #si oui, on coupe le relais
             GPIO.output(ArduinoPin,1)
@@ -55,7 +56,7 @@ while True:
     time.sleep(0.5)
 
     try:
-        print('Data Echo Mode Enabled')
+
 
         print "Weighting... "
         if ser.inWaiting() > 0:
@@ -76,8 +77,7 @@ while True:
             book.save(fileName)
             i += 1
 
-            #print "Data: ",parsed[5]
-            #print "Data Length: ", len(data)
+            print "Weight ",dropWeight,"/n/n"
 
 
 
