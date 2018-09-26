@@ -32,7 +32,7 @@ while True:
             break
 
     print "Waiting for stabilization"
-    time.sleep(10)
+    time.sleep(3)
     ser.reset_input_buffer()
     time.sleep(0.5)
 
@@ -48,7 +48,7 @@ while True:
                 data = ser.readline(16)
             parsed=data.split(" ")
 
-            print "Data: ",parsed
+            print "Data: ",parsed[5]
             print "Data Length: ", len(data)
 
 
