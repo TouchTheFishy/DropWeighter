@@ -50,7 +50,8 @@ while True:
                 data = ser.readline(16)
             parsed=data.split(" ")
             sheet.write(i, 0, i)
-            dropWeight=int(parsed[5])-lastweight
+            dropWeight=float(parsed[5])-lastweight
+            lastweight=float(parsed[5])
             sheet.write(i, 1, dropWeight)
             book.save(fileName)
             i += 1
