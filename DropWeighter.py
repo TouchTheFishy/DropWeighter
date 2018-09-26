@@ -13,7 +13,11 @@ f=open(fileName,'w')
 f.write('Drop   Weight'+"\n")
 f.close()
 GPIO.setup(ArduinoPin,GPIO.OUT)
-
+ser = serial.Serial('/dev/ttyS0', baudrate=9600,
+                    parity=serial.PARITY_NONE,
+                    stopbits=serial.STOPBITS_ONE,
+                    bytesize=serial.EIGHTBITS
+                    )
 print ("started")
 lastDrop=0
 i=0
@@ -29,11 +33,6 @@ while True:
 
     print "Waiting for stabilization"
     time.sleep(10)
-    ser = serial.Serial('/dev/ttyS0', baudrate=9600,
-                        parity=serial.PARITY_NONE,
-                        stopbits=serial.STOPBITS_ONE,
-                        bytesize=serial.EIGHTBITS
-                        )
 
     try:
         print('Data Echo Mode Enabled')
@@ -47,11 +46,12 @@ while True:
 
 
     except KeyboardInterrupt:
+        ser.close()
         print("Exiting Program")
 
 
     finally:
-        ser.close()
+
         pass
 
 
