@@ -26,7 +26,7 @@ while True:
             break
 
     print "Waiting for stabilization"
-    time.sleep(0.5)
+    time.sleep(1)
 
     # try:
     #     print('Data Echo Mode Enabled')
