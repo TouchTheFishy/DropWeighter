@@ -42,7 +42,6 @@ while True:
             data = ser.read(16)
             print "Data: ",data
             print "Data Length: ", len(data)
-            ser.reset_input_buffer()
 
 
 
