@@ -42,10 +42,15 @@ while True:
         print "Weighting... "
         if ser.inWaiting() > 0:
             data = ser.readline(16)
+            while len(data)!=16:
+                ser.reset_input_buffer()
+                time.sleep(0.5)
+                data = ser.readline(16)
             parsed=data.split(" ")
 
             print "Data: ",parsed
             print "Data Length: ", len(data)
+
 
 
 
