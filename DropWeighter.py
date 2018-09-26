@@ -39,7 +39,7 @@ while True:
 
         print "Weighting... "
         if ser.inWaiting() > 0:
-            data = ser.read()
+            data = ser.read(16)
             print "Data: ",data
             print "Data Length: ", len(data)
 
