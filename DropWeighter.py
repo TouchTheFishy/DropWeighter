@@ -14,14 +14,17 @@ print ("started")
 lastDrop=0
 while True:
     #try:
-    now=int(round(time.time()*1000))
     print "Dropping"
+    lastDrop=int(round(time.time()*1000))
+
+
     GPIO.output(22,1)
     while True:
+        now = int(round(time.time() * 1000))
         if (now-lastDrop)>=50:
-            lastDrop=int(round(time.time()*1000))
             GPIO.output(22,0)
             break
+
     print "Waiting for stabilization"
     time.sleep(0.5)
 
