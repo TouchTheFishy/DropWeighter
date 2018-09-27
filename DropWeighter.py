@@ -49,7 +49,7 @@ while True:
             break
     #on attend 3 secondes histoire que la balance se stabilise
     print "Waiting for stabilization"
-    time.sleep(3)
+    time.sleep(5)
     #vu que la balance envoie en continu, il faut vider le port avant de mesurer afin d'etre sur qu'on a la mesure
     #la plus recente
     ser.reset_input_buffer()
