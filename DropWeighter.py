@@ -10,7 +10,7 @@ print ("Starting program")
 ArduinoPin = 40
 
 #sauvegarde de l'heure pour le nom du fichier log
-now=time.strftime("%H%M%S_%d%b",time.localtime())
+now=time.strftime("%d%b_%H%M%S",time.localtime())
 fileName="tests/"+now+".xls"
 
 #creation du tableur de log
