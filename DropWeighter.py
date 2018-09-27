@@ -11,7 +11,7 @@ ArduinoPin = 40
 
 #sauvegarde de l'heure pour le nom du fichier log
 now=time.strftime("%H%M%S_%d%b",time.localtime())
-fileName="\\tests\\"+now+".xls"
+fileName="/tests/"+now+".xls"
 
 #creation du tableur de log
 book=xw.Workbook()
