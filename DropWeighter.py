@@ -18,7 +18,7 @@ book=xw.Workbook()
 sheet=book.add_sheet(str(now))
 #insertion des entetes
 sheet.write(0,0,'Drop')
-sheet.write(0,1,'Weight (g)')
+sheet.write(0,1,'Weight (mg)')
 
 #mise de la pin du relai en sortie
 GPIO.setup(ArduinoPin,GPIO.OUT)
@@ -71,13 +71,13 @@ while True:
             #on traduit les donnees recues en un truc lisible et on prend la valeur du
             parsed=data.split(" ")
             sheet.write(i, 0, i)
-            dropWeight=float(parsed[5])-lastWeight
-            lastWeight=float(parsed[5])
+            dropWeight=(float(parsed[5])*1000)-lastWeight
+            lastWeight=float(parsed[5])*1000
             sheet.write(i, 1, dropWeight)
             book.save(fileName)
             i += 1
 
-            print("Drop Weight: "+str(dropWeight)+"g")
+            print("Drop Weight: "+str(dropWeight)+"mg")
             print("")
             print("")
 
